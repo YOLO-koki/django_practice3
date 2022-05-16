@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block main %}
+<h1>自己紹介</h1>
+<h2>実績</h2>
+<!-- {{ 整数値|intcomma }}・・・settings.pyにNUMBER_GROUPINGの行を追加（今回は３） -->
+<p>{% now 'Y-m-d' %}現在までに{{ num_services|intcomma }}個のサービスを作成しました</p>
+<h2>スキル</h2>
+<ul>
+    {% for skill in skills %}
+    <!-- アイテムを表示させる -->
+        <li>{{ skill }}</li>
+    {% empty %}
+    <!-- アイテムがない場合に表示させる -->
+    <p>スキルがありません</p>
+    {% endfor %}
+</ul>
+{% endblock %}
